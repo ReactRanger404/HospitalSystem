@@ -1,6 +1,7 @@
 package com.health.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.health.system.common.StaffOnly;
 import com.health.system.common.result.PageResult;
 import com.health.system.common.result.Result;
 import com.health.system.entity.*;
@@ -27,6 +28,7 @@ import java.util.Map;
 @RequestMapping("/doctor")
 @RequiredArgsConstructor
 @Tag(name = "门诊医生站", description = "电子病历管理、处方开具、检查检验申请、患者历史调阅")
+@StaffOnly
 public class DoctorStationController {
 
     private final DoctorStationService doctorStationService;

@@ -2,6 +2,7 @@ package com.health.system.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.health.system.entity.*;
+import java.util.Map;
 
 /**
  * 门诊医生站服务接口
@@ -26,7 +27,7 @@ public interface DoctorStationService {
     IPage<ExamRequest> getExamRequests(Long patientId, String status, int page, int size);
 
     // ====== 历史调阅 ======
-    Object getPatientHistory(Long patientId);
+    Map<String, Object> getPatientHistory(Long patientId);
 
     // ====== 待诊患者 ======
     java.util.List<Appointment> getTodayWaitingPatients(Long doctorId);

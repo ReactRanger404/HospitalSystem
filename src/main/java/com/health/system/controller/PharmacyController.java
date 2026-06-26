@@ -1,6 +1,7 @@
 package com.health.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.health.system.common.StaffOnly;
 import com.health.system.common.result.PageResult;
 import com.health.system.common.result.Result;
 import com.health.system.dto.response.DrugVO;
@@ -27,6 +28,7 @@ import java.util.List;
 @RequestMapping("/pharmacy")
 @RequiredArgsConstructor
 @Tag(name = "药房药库管理", description = "药品信息管理、入库出库、配药发药、处方审核、库存预警")
+@StaffOnly
 public class PharmacyController {
 
     private final PharmacyService pharmacyService;

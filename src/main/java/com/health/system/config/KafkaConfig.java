@@ -1,6 +1,7 @@
 package com.health.system.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
@@ -25,6 +26,7 @@ public class KafkaConfig {
     public static final String TOPIC_SYSTEM_LOG = "topic-system-log";
 
     @Bean
+    @ConditionalOnProperty(value = "spring.kafka.enabled", havingValue = "true", matchIfMissing = false)
     public NewTopic topicAppointment() {
         return TopicBuilder.name(TOPIC_APPOINTMENT)
                 .partitions(3)
@@ -33,6 +35,7 @@ public class KafkaConfig {
     }
 
     @Bean
+    @ConditionalOnProperty(value = "spring.kafka.enabled", havingValue = "true", matchIfMissing = false)
     public NewTopic topicReportPublish() {
         return TopicBuilder.name(TOPIC_REPORT_PUBLISH)
                 .partitions(3)
@@ -41,6 +44,7 @@ public class KafkaConfig {
     }
 
     @Bean
+    @ConditionalOnProperty(value = "spring.kafka.enabled", havingValue = "true", matchIfMissing = false)
     public NewTopic topicPrescriptionAudit() {
         return TopicBuilder.name(TOPIC_PRESCRIPTION_AUDIT)
                 .partitions(2)
@@ -49,6 +53,7 @@ public class KafkaConfig {
     }
 
     @Bean
+    @ConditionalOnProperty(value = "spring.kafka.enabled", havingValue = "true", matchIfMissing = false)
     public NewTopic topicSystemLog() {
         return TopicBuilder.name(TOPIC_SYSTEM_LOG)
                 .partitions(2)

@@ -20,6 +20,9 @@
         <p>医生: zhangsan / 123456 | 药房: pharm01 / 123456</p>
         <p>医技: tech01 / 123456 | 患者: patient01 / 123456</p>
       </div>
+      <div style="text-align:center;margin-top:16px">
+        <el-button link type="primary" @click="$router.push('/patient')">← 患者线上挂号入口</el-button>
+      </div>
     </div>
   </div>
 </template>

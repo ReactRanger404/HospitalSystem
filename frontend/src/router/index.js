@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   { path: '/login', name: 'Login', component: () => import('../views/Login.vue') },
+  { path: '/patient', name: 'Patient', component: () => import('../views/patient/PatientLogin.vue') },
 
   {
     path: '/',
@@ -43,13 +44,33 @@ const router = createRouter({
 })
 
 // 路由守卫
+const ADMIN_ROLES = ['admin', 'doctor', 'nurse', 'pharmacist', 'tech']
+
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
-  if (to.path !== '/login' && !token) {
+  const userStr = localStorage.getItem('user')
+  let role = ''
+  try { role = userStr ? JSON.parse(userStr).role : '' } catch(e) {}
+
+  // 未登录 → 跳转登录页
+  if (!token && to.path !== '/login' && to.path !== '/patient') {
     next('/login')
-  } else {
-    next()
+    return
   }
+
+  // 已登录 + 患者想进管理后台 → 拦截到患者端
+  if (token && role === 'patient' && to.path.startsWith('/') && to.path !== '/patient' && to.path !== '/login') {
+    next('/patient')
+    return
+  }
+
+  // 已登录 + 非患者想进患者端 → 拦截到管理后台
+  if (token && role !== 'patient' && to.path === '/patient') {
+    next('/dashboard')
+    return
+  }
+
+  next()
 })
 
 export default router

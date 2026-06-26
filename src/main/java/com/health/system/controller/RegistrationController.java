@@ -1,6 +1,7 @@
 package com.health.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.health.system.common.StaffOnly;
 import com.health.system.common.result.PageResult;
 import com.health.system.common.result.Result;
 import com.health.system.entity.Appointment;
@@ -56,14 +57,15 @@ public class RegistrationController {
 
     // ====== 医生排班（仅管理员和护士长可管理） ======
     @PostMapping("/schedules")
-    @PreAuthorize("hasAnyRole('admin', 'nurse')")
+    @StaffOnly
     @Operation(summary = "创建医生排班")
     public Result<DoctorSchedule> createSchedule(@RequestBody DoctorSchedule schedule) {
         return Result.success(registrationService.createSchedule(schedule));
     }
 
     @GetMapping("/schedules")
-    @Operation(summary = "查询排班列表")
+    @StaffOnly
+    @Operation(summary = "查询排班列表（管理端）")
     public Result<PageResult<DoctorSchedule>> getSchedules(
             @RequestParam(required = false) Long departmentId,
             @RequestParam(required = false) Long doctorId,
@@ -115,6 +117,7 @@ public class RegistrationController {
     }
 
     @GetMapping("/appointments/doctor/today")
+    @StaffOnly
     @Operation(summary = "医生查看今日预约患者")
     public Result<PageResult<Appointment>> getTodayAppointments(
             @RequestParam Long doctorId,

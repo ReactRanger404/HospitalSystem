@@ -1,6 +1,7 @@
 package com.health.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.health.system.common.StaffOnly;
 import com.health.system.common.result.PageResult;
 import com.health.system.common.result.Result;
 import com.health.system.entity.ExamRequest;
@@ -25,6 +26,7 @@ import java.util.List;
 @RequestMapping("/tech")
 @RequiredArgsConstructor
 @Tag(name = "医技工作站", description = "检查检验接诊登记、报告录入与审核发布")
+@StaffOnly
 public class TechWorkstationController {
 
     private final TechWorkstationService techService;

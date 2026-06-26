@@ -3,7 +3,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/health_system?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 20
@@ -11,33 +11,14 @@ spring:
       idle-timeout: 300000
       connection-timeout: 20000
 
-  # Redis 配置
-  data:
-    redis:
-      host: localhost
-      port: 6379
-      database: 0
-      timeout: 5000ms
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 0
+  # 缓存（开发环境使用内存缓存，生产切换为 Redis）
+  cache:
+    type: simple
 
-  # Kafka 配置
+  # Kafka 配置（开发环境禁用，需要时设为 true 并启动 Kafka）
   kafka:
+    enabled: false
     bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      acks: all
-    consumer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
-      group-id: hospital-system-group
-      auto-offset-reset: earliest
 
 logging:
   level:

@@ -8,6 +8,7 @@ import com.health.system.entity.ExamRequest;
 import com.health.system.entity.ExamResult;
 import com.health.system.mapper.ExamRequestMapper;
 import com.health.system.mapper.ExamResultMapper;
+import com.health.system.service.MessageProducerService;
 import com.health.system.service.TechWorkstationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class TechWorkstationServiceImpl implements TechWorkstationService {
 
     private final ExamRequestMapper examRequestMapper;
     private final ExamResultMapper examResultMapper;
+    private final MessageProducerService messageProducer;
 
     @Override
     public IPage<ExamRequest> getPendingExams(String examCategory, int page, int size) {
@@ -150,6 +152,15 @@ public class TechWorkstationServiceImpl implements TechWorkstationService {
         }
 
         log.info("报告发布: examResultId={}, examRequestId={}", examResultId, result.getExamRequestId());
+
+        // 发送Kafka消息通知医生端和患者端（WebSocket实时推送）
+        if (examRequest != null) {
+            messageProducer.sendReportPublishedNotification(
+                    examRequest.getId(), examRequest.getPatientId(),
+                    examRequest.getDoctorId(), examRequest.getExamName()
+            );
+        }
+
         return result;
     }
 

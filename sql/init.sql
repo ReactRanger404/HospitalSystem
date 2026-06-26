@@ -416,26 +416,26 @@ INSERT INTO departments (name, code, category, location) VALUES
 ('药房', 'YF', '药房', '门诊楼1层');
 
 INSERT INTO users (username, password, real_name, role, gender, phone, department_id, title) VALUES
-('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '系统管理员', 'admin', '男', '13800000000', NULL, '管理员'),
+('admin', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '系统管理员', 'admin', '男', '13800000000', NULL, '管理员'),
 
-('zhangsan', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '张三', 'doctor', '男', '13800138001', 1, '主任医师'),
-('lisi', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '李四', 'doctor', '女', '13800138002', 1, '副主任医师'),
-('wangwu', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '王五', 'doctor', '男', '13800138003', 2, '主治医师'),
-('zhaoliu', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '赵六', 'doctor', '女', '13800138004', 3, '主任医师'),
-('sunqi', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '孙七', 'doctor', '男', '13800138005', 4, '副主任医师'),
-('zhouba', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '周八', 'doctor', '男', '13800138006', 11, '副主任医师'),
+('zhangsan', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '张三', 'doctor', '男', '13800138001', 1, '主任医师'),
+('lisi', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '李四', 'doctor', '女', '13800138002', 1, '副主任医师'),
+('wangwu', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '王五', 'doctor', '男', '13800138003', 2, '主治医师'),
+('zhaoliu', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '赵六', 'doctor', '女', '13800138004', 3, '主任医师'),
+('sunqi', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '孙七', 'doctor', '男', '13800138005', 4, '副主任医师'),
+('zhouba', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '周八', 'doctor', '男', '13800138006', 11, '副主任医师'),
 
-('nurse01', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '刘护士', 'nurse', '女', '13800138101', 1, '主管护师'),
-('nurse02', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '陈护士', 'nurse', '女', '13800138102', 2, '护师'),
+('nurse01', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '刘护士', 'nurse', '女', '13800138101', 1, '主管护师'),
+('nurse02', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '陈护士', 'nurse', '女', '13800138102', 2, '护师'),
 
-('tech01', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '吴技师', 'tech', '男', '13800138201', 11, '主管技师'),
-('tech02', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '郑技师', 'tech', '女', '13800138202', 12, '技师'),
+('tech01', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '吴技师', 'tech', '男', '13800138201', 11, '主管技师'),
+('tech02', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '郑技师', 'tech', '女', '13800138202', 12, '技师'),
 
-('pharm01', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '马药师', 'pharmacist', '女', '13800138301', 14, '主管药师'),
+('pharm01', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '马药师', 'pharmacist', '女', '13800138301', 14, '主管药师'),
 
-('patient01', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '王小明', 'patient', '男', '13900000001', NULL, NULL),
-('patient02', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '李小红', 'patient', '女', '13900000002', NULL, NULL),
-('patient03', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '张大爷', 'patient', '男', '13900000003', NULL, NULL);
+('patient01', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '王小明', 'patient', '男', '13900000001', NULL, NULL),
+('patient02', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '李小红', 'patient', '女', '13900000002', NULL, NULL),
+('patient03', '$2b$10$53oMuDNzkM7eEo5iNkhPueVdArdtNefEw7GEqZk/1p3.4sfioJK/y', '张大爷', 'patient', '男', '13900000003', NULL, NULL);
 
 -- 演示药品数据
 INSERT INTO drugs (code, name, generic_name, drug_category, dosage_form, specification, unit, manufacturer, sale_price, min_stock, is_prescription) VALUES

@@ -10,6 +10,7 @@ import com.health.system.entity.DoctorSchedule;
 import com.health.system.enums.AppointmentStatus;
 import com.health.system.mapper.AppointmentMapper;
 import com.health.system.mapper.DoctorScheduleMapper;
+import com.health.system.service.MessageProducerService;
 import com.health.system.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     private final DoctorScheduleMapper scheduleMapper;
     private final AppointmentMapper appointmentMapper;
+    private final MessageProducerService messageProducer;
 
     // ====== 医生排班管理 ======
 
@@ -117,6 +119,13 @@ public class RegistrationServiceImpl implements RegistrationService {
 
         log.info("预约成功: id={}, patientId={}, doctorId={}, queueNo={}",
                 appointment.getId(), appointment.getPatientId(), appointment.getDoctorId(), appointment.getQueueNumber());
+
+        // 发送Kafka异步通知（用于短信/微信/WebSocket推送）
+        messageProducer.sendAppointmentNotification(
+                appointment.getPatientId(), appointment.getDoctorId(),
+                "患者", "医生",
+                appointment.getAppointmentDate().toString(), appointment.getTimeSlot()
+        );
         return appointment;
     }
 

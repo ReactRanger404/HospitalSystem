@@ -1,6 +1,7 @@
 package com.health.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.health.system.common.StaffOnly;
 import com.health.system.common.result.PageResult;
 import com.health.system.common.result.Result;
 import com.health.system.entity.*;
@@ -29,6 +30,7 @@ import java.util.Map;
 @RequestMapping("/billing")
 @RequiredArgsConstructor
 @Tag(name = "收费与财务结算", description = "门诊收费、住院押金与结算、财务报表统计")
+@StaffOnly
 public class BillingController {
 
     private final BillingService billingService;

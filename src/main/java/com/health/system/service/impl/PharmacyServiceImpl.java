@@ -8,6 +8,7 @@ import com.health.system.common.exception.BusinessException;
 import com.health.system.entity.*;
 import com.health.system.enums.PrescriptionStatus;
 import com.health.system.mapper.*;
+import com.health.system.service.MessageProducerService;
 import com.health.system.service.PharmacyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,7 @@ public class PharmacyServiceImpl implements PharmacyService {
     private final DrugTransactionMapper transactionMapper;
     private final PrescriptionMapper prescriptionMapper;
     private final PrescriptionItemMapper prescriptionItemMapper;
+    private final MessageProducerService messageProducer;
 
     // ====== 药品管理 ======
 
@@ -68,7 +70,7 @@ public class PharmacyServiceImpl implements PharmacyService {
     }
 
     @Override
-    public IPage<Object> getDrugs(String keyword, String category, int page, int size) {
+    public IPage<DrugVO> getDrugs(String keyword, String category, int page, int size) {
         LambdaQueryWrapper<Drug> wrapper = new LambdaQueryWrapper<Drug>()
                 .orderByAsc(Drug::getCode);
         if (StrUtil.isNotBlank(keyword)) {
@@ -247,6 +249,15 @@ public class PharmacyServiceImpl implements PharmacyService {
         prescriptionItemMapper.updateById(item);
 
         log.info("处方前置审核: itemId={}, status={}, note={}", itemId, status, note);
+
+        // 发送通知给开单医生
+        Prescription prescription = prescriptionMapper.selectById(item.getPrescriptionId());
+        if (prescription != null) {
+            messageProducer.sendPrescriptionAuditNotification(
+                    prescription.getId(), prescription.getDoctorId(), status, note
+            );
+        }
+
         return item;
     }
 
