@@ -1,0 +1,31 @@
+# ===== 前端（独立部署，不纳入后端仓库） =====
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+
+# ===== Maven =====
+target/
+*.jar
+*.war
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== 日志 =====
+logs/
+*.log
+
+# ===== 上传文件 =====
+/uploads/
+
+# ===== 环境配置 =====
+*.local.yml
+application-local.yml
